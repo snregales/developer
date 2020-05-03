@@ -32,7 +32,7 @@ MY_APPS: List[str] = [
 
 THIRD_PARTY_APPS: List[str] = [
     # GraphQL
-    # GRAPHQL,
+    GRAPHQL,
 ]
 
 DJANGO_APPS: List[str] = [
@@ -122,7 +122,7 @@ USE_TZ: bool = True
 STATIC_URL: str = '/static/'
 
 # Graphene settings
-# GRAPHENE: Dict[str, object] = {
+GRAPHENE: Dict[str, object] = {
     # location of the project's graphql schema object
-    # 'SCHEMA': 'config.graphql.schema'
-# }
+    'SCHEMA': 'config.graphql.schema'
+}
