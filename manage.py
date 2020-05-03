@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 """Django's command-line utility for administrative tasks."""
 import sys
-from django.conf import settings
+# from django.conf import settings
 
 
 def main():
@@ -13,8 +13,6 @@ def main():
             "available on your PYTHONPATH environment variable? Did you "
             "forget to activate a virtual environment?"
         ) from exc
-    # This allows easy placement of apps within the project
-    sys.path.append(str(settings.APPS_DIR))
     execute_from_command_line(sys.argv)
 
 

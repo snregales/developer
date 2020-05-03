@@ -7,6 +7,7 @@ verify_ssl = true
 # Shell
 ipython = "*"
 # Test and Coverage
+factory-boy = "*"
 pytest-django = "*"
 pytest-tldr = "*"
 # Documentation
@@ -16,6 +17,7 @@ sphinx_rtd_theme = "*"
 # Web Framwork
 django = "~=2.2"
 django-environ = "~=0.4.5"
+django-model-utils = "~=4.0.0"
 # Postgres
 psycopg2-binary = "~=2.8.4"
 psycopg2 = "~=2.8.4"
@@ -24,7 +26,8 @@ graphene-django = "~=2.9.0"
 #strawberry-graphql = "~=0.24.1" # switch to graphene I have more experience here
 
 [scripts]
-tests = "./manage.py tests --settings=config.settings.tests"
+manage = "./manage.py"
+tests = "./manage.py test" 
 server = "./manage.py runserver"
 commit = "./manage.py makemigrations"
 migrate = "./manage.py migrate"

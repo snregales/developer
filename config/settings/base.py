@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 from typing import List, Dict, Any
+import sys
 
 import environ
 
@@ -17,6 +18,8 @@ from config.settings import GRAPHQL
 
 ROOT_DIR = (environ.Path(__file__) - 3)  # **/ROOT
 APPS_DIR = ROOT_DIR.path("src")  # **/ROOT/src
+# This allows easy placement of apps within the project
+sys.path.append(str(APPS_DIR))
 ENV_DIR = ROOT_DIR.path("env")
 env: environ.Env = environ.Env()
 
