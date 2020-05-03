@@ -1,0 +1,33 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+# Shell
+ipython = "*"
+# Test and Coverage
+pytest-django = "*"
+pytest-tldr = "*"
+# Documentation
+sphinx_rtd_theme = "*"
+
+[packages]
+# Web Framwork
+django = "~=2.2"
+django-environ = "~=0.4.5"
+# Postgres
+psycopg2-binary = "~=2.8.4"
+psycopg2 = "~=2.8.4"
+# GraphQl
+strawberry-graphql = "~=0.24.1"
+
+[scripts]
+tests = "./manage.py tests --settings=config.settings.tests"
+server = "./manage.py runserver"
+commit = "./manage.py makemigrations"
+migrate = "./manage.py migrate"
+shell = "./manage.py shell"
+
+[requires]
+python_version = "3.7"
