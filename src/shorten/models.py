@@ -6,6 +6,7 @@ from django.utils.translation import gettext_lazy as _
 from model_utils.models import TimeStampedModel
 from model_utils.fields import MonitorField
 
+from .manager import UrlManager
 # from .utils import validate_shortcode
 
 
@@ -28,12 +29,24 @@ class Url(TimeStampedModel):
             ),
         ],
     )
-    redirect_count = models.IntegerField(
+    _redirect_count = models.IntegerField(
         default=0, 
         help_text=_('Number of times shortcode has been retreived'))
     last_redirect = MonitorField(monitor='redirect_count')
 
-    objects = models.Manager()
+    objects = UrlManager()
+
+    @property
+    def redirect_count(self) -> int:
+        return self._redirect_count
+
+    def increment_redirect_count(self) -> 'Url':
+        """
+        increment redirect count by one.
+        :return :type Url
+        """
+        self._redirect_count+=1
+        self.save()
 
     class Meta:
         ordering: Tuple[str] = ('created', 'modified')

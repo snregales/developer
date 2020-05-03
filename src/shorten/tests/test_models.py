@@ -33,6 +33,14 @@ class UrlCreateTestCase:
         assert url.shortcode != None
         assert url.shortcode != URL_SHORT
 
+    def test_increment_redirect_count(db):
+        url: Url = UrlFactory()
+        past = url.last_redirect
+        assert url.redirect_count == 0
+        url.increment_redirect_count()
+        assert url.redirect_count == 1
+        assert url.last_redirect != past
+
 
 @pytest.mark.parametrize('value', [
     'abscew',
