@@ -15,8 +15,8 @@ import environ
 
 from config.settings import GRAPHQL
 
-ROOT_DIR = (environ.Path(__file__) - 3)  # **/Migrate-Rest-To-GraphQL
-APPS_DIR = ROOT_DIR.path("src")  # **/Migrate-Rest-To-GraphQL/src
+ROOT_DIR = (environ.Path(__file__) - 3)  # **/ROOT
+APPS_DIR = ROOT_DIR.path("src")  # **/ROOT/src
 ENV_DIR = ROOT_DIR.path("env")
 env: environ.Env = environ.Env()
 
@@ -28,6 +28,7 @@ env.read_env(str(ENV_DIR.path(".postgres")))
 
 # Application definition
 MY_APPS: List[str] = [
+    'shorten.apps.ShortenConfig'
 ]
 
 THIRD_PARTY_APPS: List[str] = [
