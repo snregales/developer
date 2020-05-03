@@ -12,6 +12,7 @@ pytest-django = "*"
 pytest-tldr = "*"
 # Documentation
 sphinx_rtd_theme = "*"
+pylint = "*"
 
 [packages]
 # Web Framwork
