@@ -1,0 +1,1 @@
+GRAPHQL: str = 'strawberry.django'
