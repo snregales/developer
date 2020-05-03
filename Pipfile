@@ -20,7 +20,8 @@ django-environ = "~=0.4.5"
 psycopg2-binary = "~=2.8.4"
 psycopg2 = "~=2.8.4"
 # GraphQl
-strawberry-graphql = "~=0.24.1"
+graphene-django = "~=2.9.0"
+#strawberry-graphql = "~=0.24.1" # switch to graphene I have more experience here
 
 [scripts]
 tests = "./manage.py tests --settings=config.settings.tests"

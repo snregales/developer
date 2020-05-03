@@ -1,1 +1,1 @@
-GRAPHQL: str = 'strawberry.django'
+GRAPHQL: str = 'graphene_django'
