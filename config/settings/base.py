@@ -128,5 +128,5 @@ STATIC_URL: str = '/static/'
 # Graphene settings
 GRAPHENE: Dict[str, object] = {
     # location of the project's graphql schema object
-    'SCHEMA': 'config.graphql.schema'
+    'SCHEMA': 'config.graphql.schema',
 }
