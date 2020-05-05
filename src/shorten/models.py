@@ -11,14 +11,9 @@ from .manager import UrlManager
 
 
 class Url(TimeStampedModel):
-    url = models.CharField(
-        _('url'),
-        primary_key=True, 
-        max_length=256
-    )
     shortcode = models.CharField(
         _('shorcode'),
-        unique=True,
+        primary_key=True,
         max_length=6,
         help_text=_('url shortname'),
         validators=[
@@ -28,6 +23,10 @@ class Url(TimeStampedModel):
                 code='invalid shortcode',
             ),
         ],
+    )
+    url = models.CharField(
+        _('url'),
+        max_length=256
     )
     _redirect_count = models.IntegerField(
         default=0, 
