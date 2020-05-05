@@ -1,16 +1,16 @@
 import graphene
 
 from shorten.graphql.queries import UrlQuery
-# from src.shorten.graphql.mutations import UrlMutation
+from shorten.graphql.mutations import UrlMutations
 
-class Query(UrlQuery,#):
+class Query(UrlQuery,
             graphene.ObjectType):
     pass
 
 
-class Mutation(graphene.ObjectType):
+class Mutation(UrlMutations,
+               graphene.ObjectType):
     pass
 
 
-# schema: graphene.Schema = graphene.Schema(query=Query, mutation=Mutation)
-schema: graphene.Schema = graphene.Schema(query=Query)
+schema: graphene.Schema = graphene.Schema(query=Query, mutation=Mutation)
