@@ -5,35 +5,24 @@ import pytest
 
 from config.graphql import schema
 
+from shorten.graphql import NOT_FOUND
+from . import ON_HTTP_ERROR_TYPE, ON_URL_TYPE
 from ..factory import ShortCodeUrlFactory
-
 
 def test_url_not_found(db) -> None:
     assert Client(schema).execute(
 '''
 {
     url(shortcode: "qwerty") {
-    __typename
-    ... on UrlType {
-      shortcode
-      lastRedirect
-    }
-    ... on HTTPErrorType {
-      message
-      code
-    }
+    %s
   }
 }
-'''
+''' % ON_HTTP_ERROR_TYPE
     ) == {
     "data": {
-        "url": {
-        "__typename": "HTTPErrorType",
-        "message": "Shortcode not found",
-        "code": 404
-        }
+      "url":  NOT_FOUND
     }
-}
+  }
 
 @pytest.mark.django_db
 def test_query_url(db) -> None:
@@ -42,22 +31,10 @@ def test_query_url(db) -> None:
 '''
 {
   url(shortcode: "%s") {
-    __typename
-    ... on UrlType {
-      url
-      shortcode
-      lastRedirect
-      created
-      modified
-      redirectCount      
-    }
-    ... on HTTPErrorType {
-      message
-      code
-    }
+  %s
   }
 } 
-''' % url.shortcode
+''' % (url.shortcode, ON_URL_TYPE)
     )
     assert response['data']['url']
     response = response['data']['url']

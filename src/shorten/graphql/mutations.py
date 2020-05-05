@@ -3,7 +3,7 @@ from django.db import IntegrityError
 from graphene import Mutation, Field, String
 from graphql.execution.base import ResolveInfo
 
-from .http_error import INVALID, IN_USE, NOT_FOUND, BAD
+from .http_error import HTTP_BAD, HTTP_IN_USE, HTTP_INVALID, HTTP_NOT_FOUND 
 from .schema import UrlErrorUnion, HTTPErrorType
 from .. import REGEX_VALIDATOR_MSG
 from ..models import Url
@@ -24,9 +24,9 @@ class CreateUrl(Mutation):
             return CreateUrl(url=url_object)
         except ValidationError as e:
             if 'url' in e.message_dict:
-                return CreateUrl(BAD)
+                return CreateUrl(HTTP_BAD)
             return CreateUrl(
-                url=INVALID if e.messages[0] == REGEX_VALIDATOR_MSG else IN_USE
+                url=HTTP_INVALID if e.messages[0] == REGEX_VALIDATOR_MSG else HTTP_IN_USE
             )
 
 
@@ -44,7 +44,7 @@ class UpdateUrl(Mutation):
             url_object.save()
             return UpdateUrl(url=url_object)
         except ObjectDoesNotExist:
-            return UpdateUrl(url=NOT_FOUND)
+            return UpdateUrl(url=HTTP_NOT_FOUND)
             
 
 class DeleteUrl(Mutation):
@@ -59,7 +59,7 @@ class DeleteUrl(Mutation):
             url.delete()
             return DeleteUrl(url=url)
         except ObjectDoesNotExist:
-            return DeleteUrl(url=NOT_FOUND)
+            return DeleteUrl(url=HTTP_NOT_FOUND)
 
 
 class UrlMutations:

@@ -12,5 +12,3 @@ def test_generated_shortcode() -> None:
     assert short.isalnum
     assert short.islower
     assert short.isascii
-
-

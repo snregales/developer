@@ -3,7 +3,7 @@ from graphene import relay, Field, String
 from graphql.execution.base import ResolveInfo
 
 from .schema import UrlConnection, UrlType, UrlErrorUnion, HTTPErrorType
-from .http_error import NOT_FOUND
+from .http_error import HTTP_NOT_FOUND
 from ..models import Url
 
 
@@ -20,4 +20,4 @@ class UrlQuery:
             url.increment_redirect_count()     
             return url
         except ObjectDoesNotExist:
-            return NOT_FOUND
+            return HTTP_NOT_FOUND

@@ -1,18 +1,7 @@
 from .schema import HTTPErrorType
+from . import INVALID, IN_USE, BAD, NOT_FOUND
 
-INVALID: HTTPErrorType = HTTPErrorType( 
-    message='The provided shortcode is invalid', 
-    code=412
-)
-IN_USE: HTTPErrorType = HTTPErrorType(
-    message='Shortcode already in use',
-    code=409
-)
-NOT_FOUND: HTTPErrorType = HTTPErrorType(
-    message='Shortcode not found',
-    code=404
-)
-BAD: HTTPErrorType = HTTPErrorType( 
-    message='Url not present or valid',
-    code=400
-)
+HTTP_INVALID: HTTPErrorType = HTTPErrorType(**INVALID)
+HTTP_IN_USE: HTTPErrorType = HTTPErrorType(**IN_USE)
+HTTP_NOT_FOUND: HTTPErrorType = HTTPErrorType(**NOT_FOUND)
+HTTP_BAD: HTTPErrorType = HTTPErrorType(**BAD)
