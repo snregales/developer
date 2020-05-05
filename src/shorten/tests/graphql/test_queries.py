@@ -29,7 +29,7 @@ def test_url_not_found(db) -> None:
     "data": {
         "url": {
         "__typename": "HTTPErrorType",
-        "message": "Shortcode qwerty not found",
+        "message": "Shortcode not found",
         "code": 404
         }
     }

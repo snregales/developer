@@ -3,6 +3,7 @@ from graphene import relay, Field, String
 from graphql.execution.base import ResolveInfo
 
 from .schema import UrlConnection, UrlType, UrlErrorUnion, HTTPErrorType
+from .http_error import NOT_FOUND
 from ..models import Url
 
 
@@ -16,8 +17,7 @@ class UrlQuery:
     def resolve_url(self, info: ResolveInfo, shortcode: String, **kwargs):
         try:
             url = Url.objects.get(shortcode=shortcode)
-            url.increment_redirect_count()            
+            url.increment_redirect_count()     
             return url
         except ObjectDoesNotExist:
-            print('url does not exist')
-            return HTTPErrorType(message='Shortcode %s not found' % shortcode, code=404)
+            return NOT_FOUND
