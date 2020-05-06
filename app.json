@@ -25,8 +25,8 @@
       }
    ],
    "scripts":{
-       "test": "test",
-       "postdeploy": "migrate"
+       "test": "python -m pipenv run test",
+       "postdeploy": "python -m pipenv run migrate"
    },
    "stack": "heroku-18"
 }
