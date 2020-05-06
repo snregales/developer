@@ -11,6 +11,18 @@ from .manager import UrlManager
 
 
 class Url(TimeStampedModel):
+    '''
+    Url model
+
+    shortcode -> str pk 
+    url -> str 
+    redirect_count -> int:  amount of redirect calls
+    last_redirect -> datetime: last redirect timestamp
+
+    created -> datetime
+    modified -> datetime
+    '''
+
     shortcode = models.CharField(
         _('shorcode'),
         primary_key=True,
@@ -40,7 +52,7 @@ class Url(TimeStampedModel):
     def redirect_count(self) -> int:
         return self._redirect_count
 
-    def increment_redirect_count(self) -> 'Url':
+    def increment_redirect_count(self) -> None:
         """
         increment redirect count by one.
         :return :type Url

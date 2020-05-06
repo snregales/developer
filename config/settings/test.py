@@ -1,8 +1,6 @@
 from .base import *
 
-# MY_APPS = [
-    # 'src.shorten.apps.ShortenConfig'
-# ]
+
 # GENERAL
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#secret-key

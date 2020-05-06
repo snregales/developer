@@ -6,10 +6,11 @@ from graphql.execution.base import ResolveInfo
 from .http_error import HTTP_BAD, HTTP_IN_USE, HTTP_INVALID, HTTP_NOT_FOUND 
 from .schema import UrlErrorUnion, HTTPErrorType
 from .. import REGEX_VALIDATOR_MSG
-from ..models import Url
+from shorten.models import Url
 
 
 class CreateUrl(Mutation):
+    '''Url's creation mutation.'''
     class Arguments:
         url = String(required=True)
         shortcode = String()
@@ -17,6 +18,14 @@ class CreateUrl(Mutation):
     url = Field(UrlErrorUnion)
     
     def mutate(self, info: ResolveInfo, url: str, shortcode: str):
+        '''
+        Create a new instance and return its ObjectType
+
+        :param info :type ResolveInfo
+        :param url :type str
+        :param shortcode :type str
+        :return :type CreateUrl
+        '''
         try:
             url_object = Url(url=url, shortcode=shortcode)
             url_object.full_clean()
@@ -31,6 +40,7 @@ class CreateUrl(Mutation):
 
 
 class UpdateUrl(Mutation):
+    '''Url's update mutation'''
     class Arguments:
         url = String()
         id = String(required=True)
@@ -38,6 +48,14 @@ class UpdateUrl(Mutation):
     url = Field(UrlErrorUnion)
 
     def mutate(self, info:ResolveInfo, id: str, url: str):
+        '''
+        Get instance by id and update its url.
+
+        :param info :type ResolveInfo
+        :param id :type str
+        :param url :type str
+        :return :type UpdateUrl
+        '''
         try:
             url_object = Url.objects.get(pk=id)
             url_object.url = url
@@ -48,12 +66,20 @@ class UpdateUrl(Mutation):
             
 
 class DeleteUrl(Mutation):
+    '''Url's delete matation'''
     class Arguments:
         id = String(required=True)
 
     url = Field(UrlErrorUnion)
 
     def mutate(self, info:ResolveInfo, id: str):
+        '''
+        Get instance by id and remove it.
+
+        :param info :type ResolveInfo
+        :param id :type str
+        :return :type DeleteUrl
+        '''
         try:
             url = Url.objects.get(pk=id)
             url.delete()
@@ -63,6 +89,7 @@ class DeleteUrl(Mutation):
 
 
 class UrlMutations:
+    '''All of Url's mutations'''
     create_url = CreateUrl.Field()
     update_url = UpdateUrl.Field()
     delete_url = DeleteUrl.Field()

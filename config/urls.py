@@ -21,8 +21,7 @@ from graphene_django.views import GraphQLView
 from django.views.generic.base import RedirectView
 
 urlpatterns: List[Union[URLResolver, URLPattern]] = [
-    path('admin/', admin.site.urls),
-    # graphiql enables a web GraphQL playground
+    # add graphql route and activate graphql playground 
     path('graphql/', GraphQLView.as_view(graphiql=True), name='graphql'),
     path('', RedirectView.as_view(pattern_name='graphql'), name='to_graphql')
 ]
