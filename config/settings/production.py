@@ -6,7 +6,7 @@ from .base import *
 
 SECRET_KEY: str = env.str('SECRET_KEY')
 
-DEBUG: bool = bool(env.str('DEBUG'))
+DEBUG: bool = bool(env.int('DEBUG'))
 
 ALLOWED_HOST = ['.herokuapp.com']
 
