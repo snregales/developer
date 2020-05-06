@@ -27,12 +27,18 @@ graphene-django = "~=2.9.0"
 #strawberry-graphql = "~=0.24.1" # switch to graphene I have more experience here
 
 [scripts]
+# Pytest
+test = "pytest -v"
+# Django
 manage = "./manage.py"
-tests = "./manage.py test" 
 server = "./manage.py runserver"
 commit = "./manage.py makemigrations"
 migrate = "./manage.py migrate"
 shell = "./manage.py shell"
+# Documentation
+init_docs = "sphinx-quickstart ./docs --sep -p Assassment -a 'Sharlon Regales' -l en --ext-autodoc"
+docs = "sphinx-apidoc -o ./docs/source ."
+html = "make html"
 
 [requires]
 python_version = "3.7"
