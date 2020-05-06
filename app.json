@@ -1,11 +1,20 @@
 {
    "name": "gym_regiment",
-   "repository": "https://github.com/snregales/developer.git"
+   "repository": "https://github.com/snregales/developer.git",
    "env": {
       "SECRET_KEY": {
          "description": "SECRET_KEY.",
          "generator": "secret"
       },
+      "DISABLE_COLLECTSTATIC": {
+         "description": "Disable collect static files",
+         "value": 1
+      },
+      "DJANGO_SETTINGS_MODULE": {
+         "description": "indicates where django project's settings is located",
+         "value": "config.settings.production"
+      }
+   },
    "buildpacks": [
       {
          "url": "heroku/python"
@@ -20,8 +29,7 @@
       }
    ],
    "scripts":{
-       "test": "pipenv run test",
-       "postdeploy": "pipenv run migrate"
+       "test": "python -m pipenv run test"
    },
    "stack": "heroku-18"
 }
