@@ -25,7 +25,11 @@ psycopg2-binary = "~=2.8.4"
 psycopg2 = "~=2.8.4"
 # GraphQl
 graphene-django = "~=2.9.0"
-#strawberry-graphql = "~=0.24.1" # switch to graphene I have more experience here
+# Production
+dj-database-url = "~=0.5.0"
+django-heroku = "20.0.4"
+gunicorn = "~=0.3.1"
+whitenoise = "~=5.0.1"
 
 [scripts]
 # Pytest
