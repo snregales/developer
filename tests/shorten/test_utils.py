@@ -1,7 +1,7 @@
 # from django.core.exceptions import ValidationError
 import pytest
 
-from ..utils import (
+from shorten.utils import (
     generate_shortcode, 
     # validate_shortcode,
 )

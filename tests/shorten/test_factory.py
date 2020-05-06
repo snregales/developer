@@ -2,7 +2,7 @@ import pytest
 
 from . import URL, URL_SHORT
 from .factory import ShortCodeUrlFactory, UrlFactory
-from ..models import Url
+from shorten.models import Url
 
 
 def test_url_shortcode_factory(db) -> None:

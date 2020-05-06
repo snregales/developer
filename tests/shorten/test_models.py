@@ -7,7 +7,7 @@ from .factory import (
     UrlFactory, 
     ShortCodeUrlFactory,
 )
-from ..models import Url
+from shorten.models import Url
 
 
 @pytest.mark.django_db(transaction=True)
