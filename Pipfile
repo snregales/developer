@@ -10,6 +10,7 @@ ipython = "*"
 factory-boy = "*"
 pytest-django = "*"
 pytest-tldr = "*"
+pytest-cov = "*"
 # Documentation
 sphinx_rtd_theme = "*"
 pylint = "*"
