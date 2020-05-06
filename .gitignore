@@ -60,7 +60,7 @@ coverage.xml
 .pytest_cache/
 
 # Sphinx documentation
-docs/_build/
+docs/build/
 
 .python-version
 
@@ -73,6 +73,7 @@ docs/_build/
 #   having no cross-platform support, pipenv may install dependencies that don't work, or not
 #   install all needed dependencies.
 #Pipfile.lock
+.env
 
 # mkdocs documentation
 /site
