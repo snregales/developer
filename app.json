@@ -1,0 +1,27 @@
+{
+   "name": "gym_regiment",
+   "repository": "https://github.com/snregales/developer.git"
+   "env": {
+      "SECRET_KEY": {
+         "description": "SECRET_KEY.",
+         "generator": "secret"
+      },
+   "buildpacks": [
+      {
+         "url": "heroku/python"
+      }
+   ],
+   "addons": [
+      {
+         "plan": "heroku-postgresql:hobby-dev",
+         "options": {
+            "version": "11"
+         }
+      }
+   ],
+   "scripts":{
+       "test": "pipenv run test",
+       "postdeploy": "pipenv run migrate"
+   },
+   "stack": "heroku-18"
+}
