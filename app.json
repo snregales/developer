@@ -1,6 +1,6 @@
 {
    "name": "gym_regiment",
-   "repository": "https://github.com/snregales/developer.git"
+   "repository": "https://github.com/snregales/developer.git",
    "env": {
       "SECRET_KEY": {
          "description": "SECRET_KEY.",
