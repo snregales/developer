@@ -5,6 +5,10 @@
       "SECRET_KEY": {
          "description": "SECRET_KEY.",
          "generator": "secret"
+      },
+      "DISABLE_COLLECTSTATIC": {
+         "description": "Disable collect static files",
+         "value": 1
       }
    },
    "buildpacks": [
