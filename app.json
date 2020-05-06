@@ -9,6 +9,10 @@
       "DISABLE_COLLECTSTATIC": {
          "description": "Disable collect static files",
          "value": 1
+      },
+      "DJANGO_SETTINGS_MODULE": {
+         "description": "indicates where django project's settings is located",
+         "value": "config.settings.production"
       }
    },
    "buildpacks": [
