@@ -16,7 +16,8 @@ import environ
 
 from config.settings import GRAPHQL
 
-ROOT_DIR = (environ.Path(__file__) - 3)  # **/ROOT
+ROOT_DIR: environ.Path = (environ.Path(__file__) - 3)  # **/ROOT
+BASE_DIR = str(ROOT_DIR)
 APPS_DIR = ROOT_DIR.path("src")  # **/ROOT/src
 # This allows easy placement of apps within the project
 sys.path.append(str(APPS_DIR))
