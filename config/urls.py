@@ -17,11 +17,12 @@ from typing import List, Union
 
 from django.contrib import admin
 from django.urls import path, URLResolver, URLPattern
+from django.views.decorators.csrf import csrf_exempt
 from graphene_django.views import GraphQLView
 from django.views.generic.base import RedirectView
 
 urlpatterns: List[Union[URLResolver, URLPattern]] = [
     # add graphql route and activate graphql playground 
-    path('graphql/', GraphQLView.as_view(graphiql=True), name='graphql'),
+    path('graphql/', csrf_exempt(GraphQLView.as_view(graphiql=True)), name='graphql'),
     path('', RedirectView.as_view(pattern_name='graphql'), name='to_graphql')
 ]
