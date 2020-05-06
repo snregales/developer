@@ -5,7 +5,8 @@
       "SECRET_KEY": {
          "description": "SECRET_KEY.",
          "generator": "secret"
-      },
+      }
+   },
    "buildpacks": [
       {
          "url": "heroku/python"
