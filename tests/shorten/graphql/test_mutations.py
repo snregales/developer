@@ -11,6 +11,7 @@ from .. import URL, URL_SHORT
 from ..factory import ShortCodeUrlFactory
 
 def test_create_url(db) -> None:
+    '''Test happy path Url object create mutation request.'''
     response = Client(schema=schema).execute(
 '''
 mutation {
@@ -30,6 +31,7 @@ mutation {
 
 
 def test_create_url_bad(db) -> None:
+    '''Test url field failed validation during Url object create mutation request.'''
     Client(schema=schema).execute(
 '''
 mutation {
@@ -50,6 +52,7 @@ mutation {
 
 
 def test_create_already_in_use(db) -> None:
+    '''Test shortcode field faild validation, already in use, during Url object create mutation request.'''
     ShortCodeUrlFactory()
     Client(schema=schema).execute(
 '''
@@ -71,6 +74,7 @@ mutation {
   
 
 def test_create_already_invalid(db) -> None:
+    '''Test shortcode field faild validation, Invalid shortcode, during Url object create mutation request.'''
     Client(schema=schema).execute(
 '''
 mutation {
@@ -91,6 +95,7 @@ mutation {
 
 
 def test_update_url(db) -> None:
+    '''Test Update Url object happy path.'''
     url = ShortCodeUrlFactory()
     assert url.url != 'https://jack.com'
     response = Client(schema=schema).execute(
@@ -115,6 +120,7 @@ mutation {
     
 
 def test_update_not_found(db) -> None:
+    '''Test Not Found response during Url object update request.'''
     ShortCodeUrlFactory()
     Client(schema=schema).execute(
 '''
@@ -136,6 +142,7 @@ mutation {
 
 
 def test_update_bad(db) -> None:
+    '''Test bad response during Url object update request.'''
     ShortCodeUrlFactory()
     Client(schema=schema).execute(
 '''
@@ -157,6 +164,7 @@ mutation {
 
 
 def test_delete(db) -> None:
+    '''Test url object delete request happy path'''
     url = ShortCodeUrlFactory()
     Client(schema=schema).execute(
 '''
@@ -173,6 +181,7 @@ mutation {
 
 
 def test_delete_not_found(db) -> None:
+    '''Test Not Found response during Url instance deletion request.'''
     url = ShortCodeUrlFactory()
     assert Client(schema=schema).execute(
 '''

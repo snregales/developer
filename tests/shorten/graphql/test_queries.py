@@ -10,6 +10,7 @@ from . import ON_HTTP_ERROR_TYPE, ON_URL_TYPE
 from ..factory import ShortCodeUrlFactory
 
 def test_url_not_found(db) -> None:
+    '''Test Not Found response during url object query request'''
     assert Client(schema).execute(
 '''
 {
@@ -26,6 +27,7 @@ def test_url_not_found(db) -> None:
 
 @pytest.mark.django_db
 def test_query_url(db) -> None:
+    '''Test query Url object by shortcode happypath.'''
     url = ShortCodeUrlFactory()
     response = Client(schema).execute(
 '''

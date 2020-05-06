@@ -1,3 +1,5 @@
+'''Shorten app graphql configurations'''
+
 from typing import Dict, Union
 
 
