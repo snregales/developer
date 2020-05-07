@@ -13,6 +13,10 @@
       "DJANGO_SETTINGS_MODULE": {
          "description": "indicates where django project's settings is located",
          "value": "config.settings.production"
+      },
+      "DEBUG": {
+         "description": "Webservice debug switch",
+         "value": 1
       }
    },
    "buildpacks": [
@@ -29,7 +33,8 @@
       }
    ],
    "scripts":{
-       "test": "python -m pipenv run test"
+       "test": "python -m pipenv run test",
+       "postdeploy": "./manage.py migrate"
    },
    "stack": "heroku-18"
 }
